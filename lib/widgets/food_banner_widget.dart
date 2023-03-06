@@ -4,6 +4,7 @@ import 'package:foodmarket/models/food_model.dart';
 import 'package:foodmarket/screens/food_detail/food_detail_screen.dart';
 import 'package:foodmarket/widgets/image_network_widget.dart';
 import 'package:bouncing_widget/bouncing_widget.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class FoodBannerWidget extends StatelessWidget {
   final FoodModel food;
@@ -18,7 +19,7 @@ class FoodBannerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     int ratingActive = food.rate.floor();
     int rating = 5 - ratingActive;
-    return GestureDetector(
+    return ZoomTapAnimation(
       onTap: () {
         Navigator.pushNamed(context, FoodDetailScreen.ROUTE_NAME, arguments: {
           "food": food,
