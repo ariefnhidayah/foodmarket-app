@@ -11,6 +11,7 @@ import 'package:foodmarket/providers/transaction_provider.dart';
 import 'package:foodmarket/widgets/appbar_widget.dart';
 import 'package:foodmarket/widgets/button_widget.dart';
 import 'package:foodmarket/widgets/custom_alert_dialog.dart';
+import 'package:foodmarket/widgets/image_preview_widget.dart';
 import 'package:foodmarket/widgets/loading_dialog_widget.dart';
 import 'package:foodmarket/widgets/notification_widget.dart';
 import 'package:image_picker/image_picker.dart';
@@ -365,19 +366,28 @@ class _OrderPaidScreenState extends State<OrderPaidScreen> {
                       imageFile != null && imageFile!.existsSync()
                           ? GestureDetector(
                               onTap: () {
-                                showDialog(
-                                    context: context,
-                                    builder: (_) => _imagePreview(imageFile!),
-                                    barrierDismissible: true);
+                                // showDialog(
+                                //     context: context,
+                                //     builder: (_) => _imagePreview(imageFile!),
+                                //     barrierDismissible: true);
+                                Navigator.pushNamed(
+                                    context, ImagePreviewWidget.ROUTE_NAME,
+                                    arguments: {
+                                      "imagePath": imageFile!.path,
+                                      "from": "file"
+                                    });
                               },
-                              child: Container(
-                                width: 60,
-                                height: 60,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  image: DecorationImage(
-                                    image: FileImage(File(imageFile!.path)),
-                                    fit: BoxFit.cover,
+                              child: Hero(
+                                tag: "image-preview-${imageFile!.path}",
+                                child: Container(
+                                  width: 60,
+                                  height: 60,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    image: DecorationImage(
+                                      image: FileImage(File(imageFile!.path)),
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ),
                               ),

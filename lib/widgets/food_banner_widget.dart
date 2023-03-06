@@ -3,6 +3,7 @@ import 'package:foodmarket/commons/constant.dart';
 import 'package:foodmarket/models/food_model.dart';
 import 'package:foodmarket/screens/food_detail/food_detail_screen.dart';
 import 'package:foodmarket/widgets/image_network_widget.dart';
+import 'package:bouncing_widget/bouncing_widget.dart';
 
 class FoodBannerWidget extends StatelessWidget {
   final FoodModel food;

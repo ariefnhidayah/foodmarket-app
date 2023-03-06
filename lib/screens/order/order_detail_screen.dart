@@ -11,6 +11,7 @@ import 'package:foodmarket/widgets/appbar_widget.dart';
 import 'package:foodmarket/widgets/button_widget.dart';
 import 'package:foodmarket/widgets/custom_alert_dialog.dart';
 import 'package:foodmarket/widgets/image_network_widget.dart';
+import 'package:foodmarket/widgets/image_preview_widget.dart';
 import 'package:foodmarket/widgets/lazy_load_widget.dart';
 import 'package:foodmarket/widgets/loading_dialog_widget.dart';
 import 'package:foodmarket/widgets/notification_widget.dart';
@@ -512,17 +513,27 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                                 ),
                                 GestureDetector(
                                   onTap: () {
-                                    showDialog(
-                                        context: context,
-                                        builder: (_) => _imagePreview(
-                                            transaction.paymentProof),
-                                        barrierDismissible: true);
+                                    // showDialog(
+                                    //     context: context,
+                                    //     builder: (_) => _imagePreview(
+                                    //         transaction.paymentProof),
+                                    //     barrierDismissible: true);
+                                    Navigator.pushNamed(
+                                        context, ImagePreviewWidget.ROUTE_NAME,
+                                        arguments: {
+                                          "imagePath": transaction.paymentProof,
+                                          "from": "url"
+                                        });
                                   },
-                                  child: ImageNetworkWidget(
-                                    imageUrl: transaction.paymentProof,
-                                    width: 60,
-                                    height: 60,
-                                    borderRadius: BorderRadius.circular(8),
+                                  child: Hero(
+                                    tag:
+                                        "image-preview-${transaction.paymentProof}",
+                                    child: ImageNetworkWidget(
+                                      imageUrl: transaction.paymentProof,
+                                      width: 60,
+                                      height: 60,
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
                                   ),
                                 )
                               ],

@@ -53,6 +53,7 @@ dependencies:
   dotted_border: ^2.0.0+1
   slugify: ^2.0.0
   tab_indicator_styler: ^2.0.0
+  bouncing_widget: ^2.0.0
 
 dev_dependencies:
   flutter_test:

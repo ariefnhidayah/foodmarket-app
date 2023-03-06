@@ -24,6 +24,7 @@ import 'package:foodmarket/screens/payment/payment_screen.dart';
 import 'package:foodmarket/screens/profile/edit_address_screen.dart';
 import 'package:foodmarket/screens/profile/edit_profile_screen.dart';
 import 'package:foodmarket/screens/splash_screen.dart';
+import 'package:foodmarket/widgets/image_preview_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -137,6 +138,14 @@ class MyApp extends StatelessWidget {
                 case RegisterSuccessScreen.ROUTE_NAME:
                   return MaterialPageRoute(
                       builder: (_) => const RegisterSuccessScreen());
+                case ImagePreviewWidget.ROUTE_NAME:
+                  Map<String, dynamic> args =
+                      settings.arguments as Map<String, dynamic>;
+                  return MaterialPageRoute(
+                      builder: (_) => ImagePreviewWidget(
+                            imagePath: args['imagePath'] as String,
+                            from: args['from'] as String,
+                          ));
                 default:
                   return MaterialPageRoute(builder: (_) {
                     return ErrorPageWidget(
