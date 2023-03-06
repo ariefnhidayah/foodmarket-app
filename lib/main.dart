@@ -91,9 +91,15 @@ class MyApp extends StatelessWidget {
                             avatar: args['file'] as File?,
                           ));
                 case FoodDetailScreen.ROUTE_NAME:
-                  FoodModel food = settings.arguments as FoodModel;
+                  Map<String, dynamic> args =
+                      settings.arguments as Map<String, dynamic>;
+                  FoodModel food = args['food'] as FoodModel;
+                  String imageHeroTag = args['imageHeroTag'] as String;
                   return MaterialPageRoute(
-                      builder: (_) => FoodDetailScreen(food: food));
+                      builder: (_) => FoodDetailScreen(
+                            food: food,
+                            imageHeroTag: imageHeroTag,
+                          ));
                 case OrderDetailScreen.ROUTE_NAME:
                   TransactionModel transaction =
                       settings.arguments as TransactionModel;
@@ -113,6 +119,7 @@ class MyApp extends StatelessWidget {
                     builder: (_) => PaymentScreen(
                       quantity: args['quantity'] as int,
                       food: args['food'] as FoodModel,
+                      imageHeroTag: args['imageHeroTag'] as String,
                     ),
                   );
                 case EditProfileScreen.ROUTE_NAME:

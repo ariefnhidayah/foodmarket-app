@@ -14,8 +14,10 @@ class FoodWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, FoodDetailScreen.ROUTE_NAME,
-            arguments: food);
+        Navigator.pushNamed(context, FoodDetailScreen.ROUTE_NAME, arguments: {
+          "food": food,
+          "imageHeroTag": "image-${food.id}",
+        });
       },
       child: Container(
         width: MediaQuery.of(context).size.width,

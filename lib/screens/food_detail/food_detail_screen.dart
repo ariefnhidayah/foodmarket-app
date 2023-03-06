@@ -12,19 +12,23 @@ import 'package:foodmarket/widgets/image_network_widget.dart';
 
 class FoodDetailScreen extends StatefulWidget {
   final FoodModel food;
-  const FoodDetailScreen({Key? key, required this.food}) : super(key: key);
+  final String imageHeroTag;
+  const FoodDetailScreen({Key? key, required this.food, this.imageHeroTag = ''})
+      : super(key: key);
 
   static const String ROUTE_NAME = '/food/detail';
 
   @override
   // ignore: no_logic_in_create_state
-  State<FoodDetailScreen> createState() => _FoodDetailScreenState(food);
+  State<FoodDetailScreen> createState() =>
+      _FoodDetailScreenState(food, imageHeroTag);
 }
 
 class _FoodDetailScreenState extends State<FoodDetailScreen> {
   final FoodModel food;
+  final String imageHeroTag;
 
-  _FoodDetailScreenState(this.food);
+  _FoodDetailScreenState(this.food, this.imageHeroTag);
 
   final TextEditingController _controller = TextEditingController();
 
@@ -78,17 +82,26 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
                 children: [
                   Container(
                     transform: Matrix4.translationValues(0.0, -50, 0.0),
-                    child: ImageNetworkWidget(
-                      imageUrl: food.picturePath,
-                      width: MediaQuery.of(context).size.width,
-                      height: 330,
-                      boxFit: BoxFit.cover,
-                    ),
+                    child: imageHeroTag.isEmpty
+                        ? ImageNetworkWidget(
+                            imageUrl: food.picturePath,
+                            width: MediaQuery.of(context).size.width,
+                            height: 330,
+                            boxFit: BoxFit.cover,
+                          )
+                        : Hero(
+                            tag: imageHeroTag,
+                            child: ImageNetworkWidget(
+                              imageUrl: food.picturePath,
+                              width: MediaQuery.of(context).size.width,
+                              height: 330,
+                              boxFit: BoxFit.cover,
+                            )),
                   ),
                   Container(
-                    transform: Matrix4.translationValues(0.0, -70, 0.0),
+                    transform: Matrix4.translationValues(0.0, -50, 0.0),
                     padding: const EdgeInsets.symmetric(
-                      vertical: 26,
+                      vertical: 24,
                       horizontal: 16,
                     ),
                     decoration: const BoxDecoration(
@@ -334,26 +347,30 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
                       ),
                     ],
                   ),
-                  ButtonWidget(
-                    onPress: int.parse(
-                              _controller.text != '' ? _controller.text : '0',
-                            ) ==
-                            0
-                        ? null
-                        : () {
-                            Navigator.pushNamed(
-                                context, PaymentScreen.ROUTE_NAME,
-                                arguments: {
-                                  "quantity": int.parse(_controller.text),
-                                  "food": food,
-                                });
-                          },
-                    child: Text(
-                      "Order Now",
-                      style: textStyleTheme(),
+                  Hero(
+                    tag: "button-" + food.id.toString(),
+                    child: ButtonWidget(
+                      onPress: int.parse(
+                                _controller.text != '' ? _controller.text : '0',
+                              ) ==
+                              0
+                          ? null
+                          : () {
+                              Navigator.pushNamed(
+                                  context, PaymentScreen.ROUTE_NAME,
+                                  arguments: {
+                                    "quantity": int.parse(_controller.text),
+                                    "food": food,
+                                    "imageHeroTag": imageHeroTag,
+                                  });
+                            },
+                      child: Text(
+                        "Order Now",
+                        style: textStyleTheme(),
+                      ),
+                      width: 150,
+                      elevation: 0,
                     ),
-                    width: 150,
-                    elevation: 0,
                   ),
                 ],
               ),

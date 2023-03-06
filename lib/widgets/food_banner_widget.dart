@@ -19,8 +19,10 @@ class FoodBannerWidget extends StatelessWidget {
     int rating = 5 - ratingActive;
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, FoodDetailScreen.ROUTE_NAME,
-            arguments: food);
+        Navigator.pushNamed(context, FoodDetailScreen.ROUTE_NAME, arguments: {
+          "food": food,
+          "imageHeroTag": "banner-image-${food.id}",
+        });
       },
       child: Container(
         width: 200,
@@ -45,11 +47,14 @@ class FoodBannerWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
           child: Column(
             children: [
-              ImageNetworkWidget(
-                imageUrl: food.picturePath,
-                width: 200,
-                height: 140,
-                boxFit: BoxFit.cover,
+              Hero(
+                tag: "banner-image-${food.id}",
+                child: ImageNetworkWidget(
+                  imageUrl: food.picturePath,
+                  width: 200,
+                  height: 140,
+                  boxFit: BoxFit.cover,
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(12),
