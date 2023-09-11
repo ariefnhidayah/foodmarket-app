@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -96,6 +95,5 @@ class FoodServiceImpl implements FoodService {
     } catch (e) {
       return const ResponseModel(success: false, message: EXEPTION_ERROR);
     }
-    throw UnimplementedError();
   }
 }

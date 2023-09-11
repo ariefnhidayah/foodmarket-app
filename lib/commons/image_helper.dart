@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:math';
 
 abstract class ImageHelper {
   static int limitFileSize = 1000000;

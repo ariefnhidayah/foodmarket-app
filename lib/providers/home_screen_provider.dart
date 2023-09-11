@@ -1,5 +1,4 @@
 import 'package:flutter/foundation.dart';
-import 'package:foodmarket/commons/constant.dart';
 import 'package:foodmarket/models/food_model.dart';
 import 'package:foodmarket/models/response_model.dart';
 import 'package:foodmarket/services/food_service.dart';

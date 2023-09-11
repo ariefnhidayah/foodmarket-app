@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -7,7 +6,6 @@ import 'package:foodmarket/commons/constant.dart';
 import 'package:foodmarket/models/food_model.dart';
 import 'package:foodmarket/models/response_model.dart';
 import 'package:foodmarket/models/transaction_model.dart';
-import 'package:foodmarket/models/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class TransactionService {

@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:foodmarket/commons/constant.dart';
 import 'package:foodmarket/commons/theme.dart';
 import 'package:foodmarket/providers/register_address_screen_provider.dart';
 import 'package:foodmarket/providers/register_screen_provider.dart';
-import 'package:foodmarket/screens/authentication/register_screen.dart';
-import 'package:foodmarket/screens/main_screen.dart';
 import 'package:foodmarket/widgets/button_widget.dart';
 import 'package:provider/provider.dart';
 

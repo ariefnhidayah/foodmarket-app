@@ -2,12 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:foodmarket/providers/authentication_provider.dart';
-import 'package:foodmarket/providers/navigation_provider.dart';
-import 'package:foodmarket/screens/home/home_screen.dart';
 import 'package:foodmarket/screens/navigation_screen.dart';
-import 'package:foodmarket/widgets/button_widget.dart';
 import '/screens/authentication/login_screen.dart';
-import '/screens/splash_screen.dart';
 import 'package:provider/provider.dart';
 
 class MainScreen extends StatefulWidget {

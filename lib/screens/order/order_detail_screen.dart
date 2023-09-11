@@ -15,7 +15,6 @@ import 'package:foodmarket/widgets/image_preview_widget.dart';
 import 'package:foodmarket/widgets/lazy_load_widget.dart';
 import 'package:foodmarket/widgets/loading_dialog_widget.dart';
 import 'package:foodmarket/widgets/notification_widget.dart';
-import 'package:loading_indicator/loading_indicator.dart';
 import 'package:provider/provider.dart';
 
 class OrderDetailScreen extends StatefulWidget {
